@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" fill="none">
+  <rect width="1200" height="700" fill="#f3f1ea"/>
+  <circle cx="980" cy="130" r="170" fill="#ff6b6b" fill-opacity="0.14"/>
+  <rect x="120" y="170" width="960" height="360" rx="28" fill="white"/>
+  <text x="170" y="300" font-size="64" font-family="Arial, sans-serif" fill="#111111" font-weight="700">AI FOR EXECUTIVES</text>
+  <text x="170" y="360" font-size="30" font-family="Arial, sans-serif" fill="#444444">Strategic Transformation Program</text>
+</svg>
