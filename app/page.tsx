@@ -115,7 +115,7 @@ export default function HomePage() {
           </p>
           <h1 className="text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">UPSKILL TO AI DOMINANCE</h1>
           <p className="max-w-xl text-lg text-black/70">
-            Built for high-performance leaders and technical teams who need real AI leverage. Learn to architect strategy, deploy production systems, and create defensible advantage.
+            AI FOR INDIA
           </p>
           <Link
             href="/courses"
