@@ -10,44 +10,50 @@ const testimonials = [
   {
     company: "OpenAI",
     quote:
-      "The strategic clarity from AIUPSKILLED is exceptional. Our cross-functional teams now execute with shared language and measurable milestones.",
-    name: "Elena Brooks",
-    role: "Director, Applied Strategy"
+      "The executive track helped us align leadership on where AI should create measurable business leverage instead of scattered pilots.",
+    name: "Aarav Mehta",
+    role: "VP Product, Bengaluru",
+    image: "/images/testimonial-aarav.svg"
   },
   {
     company: "Anthropic",
     quote:
-      "A premium program built for real operators. It helped senior leaders bridge governance, capability building, and product velocity.",
-    name: "Marcus Lee",
-    role: "Head of Enterprise Programs"
+      "The frameworks were crisp, practical, and immediately usable for cross-functional rollout planning across product and operations.",
+    name: "Isha Narayanan",
+    role: "Strategy Lead, Chennai",
+    image: "/images/testimonial-isha.svg"
   },
   {
     company: "Google DeepMind",
     quote:
-      "Precision over hype. The frameworks are practical and adapted for large-scale technical environments.",
-    name: "Sonia Patel",
-    role: "AI Transformation Lead"
+      "AIUPSKILLED treats technical execution with seriousness. The builder track maps directly to how modern teams should ship AI products.",
+    name: "Rohan Kulkarni",
+    role: "Engineering Manager, Pune",
+    image: "/images/testimonial-rohan.svg"
   },
   {
     company: "Meta AI",
     quote:
-      "Our internal adoption playbook improved significantly after this training. It turned intent into reliable operating rhythm.",
-    name: "Daniel Romero",
-    role: "Program Manager, AI"
+      "The material gave our team a stronger internal language for governance, capability planning, and implementation sequencing.",
+    name: "Meera Srinivasan",
+    role: "Program Director, Hyderabad",
+    image: "/images/testimonial-meera.svg"
   },
   {
     company: "Microsoft AI",
     quote:
-      "High-trust, high-rigor content. It aligns leadership strategy with engineering realities in a rare way.",
-    name: "Nora Elliott",
-    role: "Principal, Strategic Enablement"
+      "High trust, high clarity, and no fluff. It helped us connect executive intent with engineering realities much faster.",
+    name: "Karan Bhatia",
+    role: "Principal Solutions Lead, Gurugram",
+    image: "/images/testimonial-karan.svg"
   },
   {
     company: "NVIDIA AI",
     quote:
-      "This is exactly the standard we expect for premium executive AI education: practical depth with sharp business alignment.",
-    name: "Victor Chen",
-    role: "Senior Solutions Architect"
+      "One of the rare programs that balances strategic context with practical implementation depth for serious teams in India.",
+    name: "Ananya Rao",
+    role: "AI Platform Architect, Mumbai",
+    image: "/images/testimonial-ananya.svg"
   }
 ];
 
@@ -82,15 +88,6 @@ const faqs = [
     answer:
       "Yes. Team enrollment is ideal for aligning product, engineering, and platform stakeholders on architecture standards and deployment quality."
   }
-];
-
-const instagramMocks = [
-  "Executive AI strategy sprint was exactly what our board needed.",
-  "Finally, a technical AI course that treats evals and reliability seriously.",
-  "The quality feels world-class. Premium, practical, and direct.",
-  "Our AI roadmap is now tied to revenue and cost targets.",
-  "Best AI learning investment our team made this quarter.",
-  "Clear frameworks, fast implementation, strong outcomes."
 ];
 
 export default function HomePage() {
@@ -141,6 +138,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-5 pb-8 md:px-8">
+        <NewsletterSection compact />
+      </section>
+
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8" id="courses">
         <div className="mb-10 flex items-end justify-between gap-4">
           <h2 className="text-3xl font-bold md:text-5xl">Explore Courses</h2>
@@ -156,10 +157,13 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
-        <h2 className="mb-10 text-3xl font-bold md:text-5xl">Trusted by Teams Across the AI Frontier</h2>
+        <div className="mb-10 max-w-3xl">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Trusted by Teams</p>
+          <h2 className="mt-3 text-3xl font-bold md:text-5xl">Operators across India trust the depth, clarity, and execution standard.</h2>
+        </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.company} {...testimonial} />
+            <TestimonialCard key={testimonial.name} {...testimonial} />
           ))}
         </div>
       </section>
@@ -167,18 +171,6 @@ export default function HomePage() {
       <section className="mx-auto max-w-5xl px-5 py-16 md:px-8">
         <h2 className="mb-10 text-3xl font-bold md:text-5xl">FAQ</h2>
         <FAQ items={faqs} />
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
-        <h2 className="mb-10 text-3xl font-bold md:text-5xl">Instagram Reviews</h2>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {instagramMocks.map((review, index) => (
-            <article key={review} className="rounded-2xl border border-black/10 bg-white p-5 shadow-soft">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-accent">@aiupskilled {index + 1}</p>
-              <p className="text-black/80">{review}</p>
-            </article>
-          ))}
-        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
