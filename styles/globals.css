@@ -4,6 +4,12 @@
 
 :root {
   color-scheme: only light;
+  --background: #faf9f6;
+  --foreground: #111111;
+  --card: rgba(255, 255, 255, 0.8);
+  --primary: #2563eb;
+  --accent: #ff6b6b;
+  --muted: #f0eee7;
 }
 
 * {
@@ -24,6 +30,7 @@ body {
   min-height: 100vh;
   line-height: 1.6;
   text-rendering: geometricPrecision;
+  background-image: radial-gradient(circle at top, rgba(255, 255, 255, 0.8), transparent 24%);
 }
 
 a {
@@ -53,6 +60,13 @@ a {
   animation: fadeUp 0.8s ease-out both;
 }
 
+.animate-gradient-shift {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.12), transparent 22%),
+    radial-gradient(circle at 80% 18%, rgba(255, 107, 107, 0.14), transparent 24%);
+  animation: gradientShift 12s ease-in-out infinite alternate;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -62,5 +76,15 @@ a {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(0, -1%, 0) scale(1.04);
   }
 }

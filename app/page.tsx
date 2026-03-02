@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CourseCard } from "@/components/CourseCard";
+import { CourseListingCard } from "@/components/courses/CourseListingCard";
 import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { NewsletterSection } from "@/components/NewsletterSection";
@@ -148,9 +148,9 @@ export default function HomePage() {
             View All
           </Link>
         </div>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-10 md:grid-cols-2">
           {courses.map((course) => (
-            <CourseCard key={course.slug} course={course} />
+            <CourseListingCard key={course.slug} course={course} />
           ))}
         </div>
       </section>
