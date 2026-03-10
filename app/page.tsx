@@ -127,7 +127,7 @@ export default function HomePage() {
         <div className="fade-in-up relative overflow-hidden rounded-3xl border border-black/5 bg-white p-2 shadow-card">
           <div className="aspect-video overflow-hidden rounded-2xl">
             <iframe
-              src="https://player.vimeo.com/video/1166992614?badge=0&autopause=0&player_id=0&app_id=58479"
+              src="https://player.vimeo.com/video/1172099904?fl=ip&fe=ec"
               title="AI Up Skilled intro"
               className="h-full w-full"
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
