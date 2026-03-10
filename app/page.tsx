@@ -8,7 +8,7 @@ import { courses } from "@/lib/courses";
 
 const testimonials = [
   {
-    company: "OpenAI",
+    company: "PhonePe",
     quote:
       "The executive track helped us align leadership on where AI should create measurable business leverage instead of scattered pilots.",
     name: "Aarav Mehta",
@@ -16,7 +16,7 @@ const testimonials = [
     image: "/images/testimonial-aarav.svg"
   },
   {
-    company: "Anthropic",
+    company: "Swiggy",
     quote:
       "The frameworks were crisp, practical, and immediately usable for cross-functional rollout planning across product and operations.",
     name: "Isha Narayanan",
@@ -24,7 +24,7 @@ const testimonials = [
     image: "/images/testimonial-isha.svg"
   },
   {
-    company: "Google DeepMind",
+    company: "Zaggle",
     quote:
       "AIUPSKILLED treats technical execution with seriousness. The builder track maps directly to how modern teams should ship AI products.",
     name: "Rohan Kulkarni",
@@ -32,7 +32,7 @@ const testimonials = [
     image: "/images/testimonial-rohan.svg"
   },
   {
-    company: "Meta AI",
+    company: "Flipkart",
     quote:
       "The material gave our team a stronger internal language for governance, capability planning, and implementation sequencing.",
     name: "Meera Srinivasan",
@@ -40,7 +40,7 @@ const testimonials = [
     image: "/images/testimonial-meera.svg"
   },
   {
-    company: "Microsoft AI",
+    company: "OLA",
     quote:
       "High trust, high clarity, and no fluff. It helped us connect executive intent with engineering realities much faster.",
     name: "Karan Bhatia",
@@ -48,7 +48,7 @@ const testimonials = [
     image: "/images/testimonial-karan.svg"
   },
   {
-    company: "NVIDIA AI",
+    company: "Amazon",
     quote:
       "One of the rare programs that balances strategic context with practical implementation depth for serious teams in India.",
     name: "Ananya Rao",
@@ -114,9 +114,6 @@ export default function HomePage() {
             For Executives & Tech Professionals
           </p>
           <h1 className="text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">UPSKILL TO AI DOMINANCE</h1>
-          <p className="max-w-xl text-lg text-black/70">
-            AI FOR INDIA
-          </p>
           <Link
             href="/courses"
             className="inline-flex rounded-full bg-black px-8 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-accent"
@@ -159,7 +156,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
         <div className="mb-10 max-w-3xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Trusted by Teams</p>
-          <h2 className="mt-3 text-3xl font-bold md:text-5xl">Operators across India trust the depth, clarity, and execution standard.</h2>
+          <h2 className="mt-3 text-3xl font-bold md:text-5xl">Testimonials.</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
