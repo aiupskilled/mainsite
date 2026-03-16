@@ -90,6 +90,13 @@ const faqs = [
   }
 ];
 
+const stats = [
+  { label: "Learning Hours", value: "10,000+" },
+  { label: "Learners Upskilled", value: "1000+" },
+  { label: "Enterprise Teams", value: "320+" },
+  { label: "Avg. Course Rating", value: "4.9/5" }
+];
+
 export default function HomePage() {
   return (
     <>
@@ -108,35 +115,65 @@ export default function HomePage() {
           ]
         }}
       />
-      <section className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-2 md:items-center md:px-8 md:pt-20">
-        <div className="fade-in-up space-y-6">
+      <section className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="ai-grid absolute inset-0 opacity-50" />
+          <div className="ai-orb ai-orb-1" />
+          <div className="ai-orb ai-orb-2" />
+          <div className="ai-orb ai-orb-3" />
+        </div>
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-2 md:items-center md:px-8 md:pt-20">
+          <div className="fade-in-up space-y-6">
           <p className="inline-flex rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             For Executives & Tech Professionals
           </p>
-          <h1 className="text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">UPSKILL TO AI DOMINANCE</h1>
-          <Link
-            href="/courses"
-            className="inline-flex rounded-full bg-black px-8 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-accent"
-          >
-            Explore Courses
-          </Link>
-        </div>
-        <div className="fade-in-up relative overflow-hidden rounded-3xl border border-black/5 bg-white p-2 shadow-card">
-          <div className="aspect-video overflow-hidden rounded-2xl">
-            <iframe
-              src="https://player.vimeo.com/video/1172099904?fl=ip&fe=ec"
-              title="AI Up Skilled intro"
-              className="h-full w-full"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+            <h1 className="text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">Master AI Skills to Transform Your Career</h1>
+            <p className="max-w-2xl text-lg text-black/70 md:text-xl">
+              Learn practical AI with real workflows, implementation frameworks, and production-ready skills designed for professionals who want measurable outcomes.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/courses"
+                className="inline-flex rounded-full bg-black px-8 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-accent"
+              >
+                Start Learning
+              </Link>
+            </div>
+          </div>
+          <div className="fade-in-up relative overflow-hidden rounded-3xl border border-black/5 bg-white p-2 shadow-card">
+            <div className="aspect-video overflow-hidden rounded-2xl">
+              <iframe
+                src="https://player.vimeo.com/video/1172099904?fl=ip&fe=ec"
+                title="AI Up Skilled intro"
+                className="h-full w-full"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 pb-8 md:px-8">
         <NewsletterSection compact />
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-8 md:px-8">
+        <div className="rounded-[2rem] border border-black/8 bg-white p-6 shadow-[0_16px_50px_rgba(17,17,17,0.06)] md:p-8">
+          <div className="mb-6 max-w-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Social Proof</p>
+            <h2 className="mt-2 text-3xl font-black tracking-tight md:text-4xl">Trusted by professionals and teams scaling AI capability.</h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat) => (
+              <article key={stat.label} className="rounded-[1.25rem] border border-black/8 bg-bg px-5 py-5">
+                <p className="text-3xl font-black tracking-tight md:text-4xl">{stat.value}</p>
+                <p className="mt-2 text-sm font-medium text-black/65">{stat.label}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8" id="courses">
