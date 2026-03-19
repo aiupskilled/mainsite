@@ -37,8 +37,7 @@ export default function CoursesPage() {
   return (
     <div className="pb-24">
       <JsonLd data={coursesListSchema} />
-      <section className="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-14">
-        <h1 className="mb-8 text-4xl font-black tracking-tight md:text-5xl">Courses</h1>
+      <section className="mx-auto max-w-7xl px-5 pt-4 md:px-8 md:pt-6">
         <CoursesFilterLayout courses={courses} />
       </section>
     </div>

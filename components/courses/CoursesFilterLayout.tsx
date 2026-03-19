@@ -59,8 +59,8 @@ export function CoursesFilterLayout({ courses }: Props) {
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[300px_1fr] lg:gap-10">
-      <aside className="h-fit rounded-xl border border-black/10 bg-white p-5 shadow-[0_12px_35px_rgba(17,17,17,0.05)] lg:sticky lg:top-24">
+    <div>
+      <section className="mb-8 border border-black/10 bg-white p-5 shadow-[0_12px_35px_rgba(17,17,17,0.05)] md:p-6">
         <div className="mb-5 flex items-center justify-between">
           <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-black/55">Filters</h2>
           <button type="button" onClick={clearAll} className="text-xs font-semibold text-accent transition hover:opacity-80">
@@ -68,7 +68,7 @@ export function CoursesFilterLayout({ courses }: Props) {
           </button>
         </div>
 
-        <div className="space-y-5">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-[1.45fr_0.9fr_1fr_1fr] xl:items-end">
           <div>
             <label htmlFor="course-search" className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">
               Search
@@ -78,7 +78,7 @@ export function CoursesFilterLayout({ courses }: Props) {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search courses"
-              className="h-10 w-full rounded-md border border-black/10 bg-bg px-3 text-sm outline-none transition focus:border-accent"
+              className="h-10 w-full border border-black/10 bg-bg px-3 text-sm outline-none transition focus:border-accent"
             />
           </div>
 
@@ -87,24 +87,24 @@ export function CoursesFilterLayout({ courses }: Props) {
             <button
               type="button"
               onClick={() => setAiOnly((prev) => !prev)}
-              className={`flex w-full items-center justify-between rounded-md border px-3 py-2 text-sm transition ${
+              className={`flex h-10 w-full items-center justify-between border px-3 text-sm transition ${
                 aiOnly ? "border-accent bg-accent/10 text-black" : "border-black/10 bg-white text-black/75 hover:border-black/20"
               }`}
             >
               <span>AI</span>
-              <span className="rounded-full bg-black/5 px-2 py-0.5 text-xs font-semibold">{courses.filter((c) => c.tags.includes("AI")).length}</span>
+              <span className="bg-black/5 px-2 py-0.5 text-xs font-semibold">{courses.filter((c) => c.tags.includes("AI")).length}</span>
             </button>
           </div>
 
           <div>
             <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-black/50">Level</p>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid h-10 grid-cols-3 gap-2">
               {(["All", "Beginner", "Advanced"] as const).map((option) => (
                 <button
                   key={option}
                   type="button"
                   onClick={() => setLevel(option)}
-                  className={`rounded-md border px-2 py-2 text-xs font-semibold transition ${
+                  className={`border px-2 text-xs font-semibold transition ${
                     level === option ? "border-accent bg-accent/10 text-black" : "border-black/10 bg-white text-black/70"
                   }`}
                 >
@@ -122,7 +122,7 @@ export function CoursesFilterLayout({ courses }: Props) {
               id="sort"
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="h-10 w-full rounded-md border border-black/10 bg-bg px-3 text-sm outline-none transition focus:border-accent"
+              className="h-10 w-full border border-black/10 bg-bg px-3 text-sm outline-none transition focus:border-accent"
             >
               <option value="recommended">Recommended</option>
               <option value="duration-asc">Duration: Short to Long</option>
@@ -131,28 +131,26 @@ export function CoursesFilterLayout({ courses }: Props) {
             </select>
           </div>
         </div>
-      </aside>
+      </section>
 
-      <div>
-        <div className="mb-5 flex items-center justify-between">
-          <p className="text-sm text-black/60">Showing {filteredCourses.length} course{filteredCourses.length === 1 ? "" : "s"}</p>
-        </div>
-
-        {filteredCourses.length > 0 ? (
-          <div className="grid gap-10 xl:grid-cols-2">
-            {filteredCourses.map((course) => (
-              <CourseListingCard key={course.slug} course={course} />
-            ))}
-          </div>
-        ) : (
-          <div className="rounded-lg border border-black/10 bg-white px-6 py-10 text-center">
-            <p className="text-lg font-semibold">No courses match your filters.</p>
-            <button type="button" onClick={clearAll} className="mt-3 text-sm font-semibold text-accent">
-              Reset filters
-            </button>
-          </div>
-        )}
+      <div className="mb-5 flex items-center justify-between">
+        <p className="text-sm text-black/60">Showing {filteredCourses.length} course{filteredCourses.length === 1 ? "" : "s"}</p>
       </div>
+
+      {filteredCourses.length > 0 ? (
+        <div className="grid gap-10 xl:grid-cols-2">
+          {filteredCourses.map((course) => (
+            <CourseListingCard key={course.slug} course={course} />
+          ))}
+        </div>
+      ) : (
+        <div className="border border-black/10 bg-white px-6 py-10 text-center">
+          <p className="text-lg font-semibold">No courses match your filters.</p>
+          <button type="button" onClick={clearAll} className="mt-3 text-sm font-semibold text-accent">
+            Reset filters
+          </button>
+        </div>
+      )}
     </div>
   );
 }
