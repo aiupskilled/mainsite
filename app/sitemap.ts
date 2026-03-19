@@ -4,7 +4,7 @@ import { courses } from "@/lib/courses";
 import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/courses", "/ai-tools", "/blog", "/about", "/contact"].map((route) => ({
+  const staticRoutes = ["", "/courses", "/ai-tools", "/blog", "/about", "/contact", "/terms", "/privacy-policy", "/refund-policy"].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
