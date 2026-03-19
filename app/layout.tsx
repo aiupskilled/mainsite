@@ -61,7 +61,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         <Header />
-        <main>{children}</main>
+        <main className="pb-20 md:pb-24">{children}</main>
         <SiteEnhancements />
         <Footer />
       </body>

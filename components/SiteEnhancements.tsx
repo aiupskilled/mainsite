@@ -141,7 +141,7 @@ export function SiteEnhancements() {
       ) : null}
 
       {showCookieBanner ? (
-        <div className="fixed inset-x-4 bottom-4 z-[65] mx-auto max-w-3xl rounded-2xl border border-black/10 bg-white p-4 shadow-[0_20px_70px_rgba(17,17,17,0.18)] md:inset-x-8 md:p-5">
+        <div className="fixed inset-x-4 bottom-20 z-[65] mx-auto max-w-3xl rounded-2xl border border-black/10 bg-white p-4 shadow-[0_20px_70px_rgba(17,17,17,0.18)] md:inset-x-8 md:bottom-24 md:p-5">
           <p className="text-sm text-black/75">
             We use cookies to improve site performance and user experience. You can accept all cookies or keep essential cookies only.
           </p>
@@ -167,11 +167,26 @@ export function SiteEnhancements() {
       <Link
         href="/contact"
         className={`fixed right-4 z-[60] inline-flex h-12 items-center rounded-full bg-black px-5 text-sm font-semibold text-white shadow-lg transition hover:bg-accent md:right-8 ${
-          showCookieBanner ? "bottom-28 md:bottom-28" : "bottom-6 md:bottom-8"
+          showCookieBanner ? "bottom-40 md:bottom-44" : "bottom-20 md:bottom-24"
         }`}
       >
         Contact Us
       </Link>
+
+      <div className="fixed inset-x-0 bottom-0 z-[58] border-t border-black/10 bg-white/95 backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 md:h-[68px] md:px-8">
+          <p className="line-clamp-1 text-xs font-semibold uppercase tracking-[0.14em] text-black/75 md:text-sm">
+            <span className="rounded-full bg-accent px-2.5 py-1 text-white">New</span>{" "}
+            <span className="font-black text-black">AI Foundations Course at ₹99</span>
+          </p>
+          <Link
+            href="/ai-course-99"
+            className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-black px-5 text-sm font-semibold text-white transition hover:bg-accent md:h-11 md:px-6"
+          >
+            Buy at Rs 99
+          </Link>
+        </div>
+      </div>
     </>
   );
 }
