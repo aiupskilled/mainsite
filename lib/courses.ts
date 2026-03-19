@@ -68,7 +68,7 @@ export const courses: Course[] = [
       "Business unit heads",
       "Transformation and strategy teams"
     ],
-    price: "$2,500",
+    price: "₹499",
     videoUrl: "https://www.youtube.com/embed/M7lc1UVf-VE",
     duration: "6 weeks",
     modulesCount: 5,
@@ -143,7 +143,7 @@ export const courses: Course[] = [
       "Technical product managers",
       "Solution architects and data platform teams"
     ],
-    price: "$1,800",
+    price: "₹499",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     duration: "8 weeks",
     modulesCount: 5,

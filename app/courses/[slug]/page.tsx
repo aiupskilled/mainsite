@@ -40,28 +40,13 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
-function FeatureIcon({ index }: { index: number }) {
-  const paths = [
-    "M12 4L19 8V16L12 20L5 16V8L12 4Z",
-    "M6 12H18M12 6V18",
-    "M7 17L17 7",
-    "M8 8H16V16H8Z"
-  ];
-
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
-      <path d={paths[index % paths.length]} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 export default async function CourseDetailPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const course = getCourseBySlug(slug);
 
   if (!course) notFound();
 
-  const otherCourse = courses.find((item) => item.slug !== course.slug);
+  const schemaPrice = course.price.replace(/[^0-9.]/g, "");
   const gradient = `bg-gradient-to-r ${course.accentFrom} ${course.accentTo}`;
   const gradientText = `bg-gradient-to-r ${course.accentFrom} ${course.accentTo} bg-clip-text text-transparent`;
 
@@ -80,8 +65,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
           },
           offers: {
             "@type": "Offer",
-            price: course.price.replace("$", ""),
-            priceCurrency: "USD",
+            price: schemaPrice,
+            priceCurrency: "INR",
             availability: "https://schema.org/InStock"
           }
         }}
@@ -139,26 +124,6 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
-        <div className="mb-8 flex items-end justify-between gap-5">
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-black/50">What You’ll Learn</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">Capability upgrades with direct business impact.</h2>
-          </div>
-        </div>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {course.learnHighlights.map((item, index) => (
-            <article key={item.title} className="rounded-[1.75rem] border border-black/10 bg-white/75 p-6 shadow-[0_18px_45px_rgba(17,17,17,0.06)] backdrop-blur">
-              <div className={`mb-5 inline-flex rounded-2xl p-3 text-white ${gradient}`}>
-                <FeatureIcon index={index} />
-              </div>
-              <h3 className="text-xl font-semibold tracking-tight">{item.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-black/70">{item.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="mx-auto max-w-7xl px-5 py-8 md:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
@@ -167,53 +132,6 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
             <p className="mt-4 max-w-xl text-black/70">Every module is designed to compress decision-making time and produce implementation-ready output, not passive learning.</p>
           </div>
           <Accordion items={course.curriculum.map((item, index) => ({ title: `Module ${index + 1}`, content: item }))} />
-        </div>
-      </section>
-
-      {otherCourse ? (
-        <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-black/50">Course Comparison</p>
-          <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">Pick the operating model that matches your role.</h2>
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            {[course, otherCourse].map((item) => {
-              const isActive = item.slug === course.slug;
-              const itemGradient = `bg-gradient-to-r ${item.accentFrom} ${item.accentTo}`;
-              return (
-                <article
-                  key={item.slug}
-                  className={`rounded-[2rem] border bg-white p-7 shadow-[0_18px_45px_rgba(17,17,17,0.06)] ${isActive ? `${item.accentBorder} ring-2 ring-black/5` : "border-black/10"}`}
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <h3 className="text-2xl font-bold tracking-tight">{item.title}</h3>
-                      <p className="mt-2 text-sm text-black/60">{item.subtitle}</p>
-                    </div>
-                    {isActive ? <span className={`rounded-full px-3 py-1 text-xs font-semibold text-white ${itemGradient}`}>Recommended</span> : null}
-                  </div>
-                  <div className="mt-6 space-y-3 text-sm text-black/70">
-                    <div className="flex items-center justify-between rounded-2xl bg-bg px-4 py-3"><span>Audience</span><span className="font-semibold text-black">{item.audience[0]}</span></div>
-                    <div className="flex items-center justify-between rounded-2xl bg-bg px-4 py-3"><span>Duration</span><span className="font-semibold text-black">{item.duration}</span></div>
-                    <div className="flex items-center justify-between rounded-2xl bg-bg px-4 py-3"><span>Depth</span><span className="font-semibold text-black">{item.level}</span></div>
-                    <div className="flex items-center justify-between rounded-2xl bg-bg px-4 py-3"><span>Price</span><span className="font-semibold text-black">{item.price}</span></div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-      ) : null}
-
-      <section className="mx-auto max-w-7xl px-5 py-8 md:px-8">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-black/50">Testimonials</p>
-        <h2 className="mt-2 text-3xl font-black tracking-tight md:text-5xl">Trusted by operators who care about quality.</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {course.testimonials.map((item) => (
-            <article key={item.name} className="rounded-[1.6rem] border border-black/10 bg-white p-6 shadow-[0_16px_35px_rgba(17,17,17,0.05)] transition duration-300 hover:scale-[1.01]">
-              <p className="text-lg leading-8 text-black/80">“{item.quote}”</p>
-              <p className="mt-5 font-semibold">{item.name}</p>
-              <p className="text-sm text-black/60">{item.role}</p>
-            </article>
-          ))}
         </div>
       </section>
 
