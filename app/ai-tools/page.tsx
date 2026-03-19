@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { siteConfig } from "@/lib/site";
 
 type ToolLink = {
   name: string;
@@ -10,7 +11,21 @@ type ToolLink = {
 export const metadata: Metadata = {
   title: "AI Tools",
   description:
-    "Learn essential AI tools for 10X productivity with practical tutorials, use-cases, and workflows across writing, automation, video, coding, and research."
+    "Learn essential AI tools for 10X productivity with practical tutorials, use-cases, and workflows across writing, automation, video, coding, and research.",
+  alternates: {
+    canonical: "/ai-tools"
+  },
+  openGraph: {
+    title: "AI Tools for Productivity | AIUPSKILLED",
+    description:
+      "Learn essential AI tools for 10X productivity with practical tutorials and workflow-first implementation.",
+    url: `${siteConfig.url}/ai-tools`
+  },
+  twitter: {
+    title: "AI Tools for Productivity | AIUPSKILLED",
+    description:
+      "Learn essential AI tools for 10X productivity with practical tutorials and workflow-first implementation."
+  }
 };
 
 const toolCategories: Array<{

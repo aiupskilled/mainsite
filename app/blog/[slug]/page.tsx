@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { getAllPostsMeta, getPostBySlug } from "@/lib/blog";
+import { siteConfig } from "@/lib/site";
 
 type Params = { slug: string };
 
@@ -19,10 +20,19 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `/blog/${post.slug}`
+    },
     openGraph: {
       title: post.title,
       description: post.description,
+      url: `${siteConfig.url}/blog/${post.slug}`,
       images: [{ url: post.image, width: 1200, height: 630, alt: post.title }]
+    },
+    twitter: {
+      title: post.title,
+      description: post.description,
+      images: [post.image]
     }
   };
 }
@@ -41,12 +51,18 @@ export default async function BlogDetailPage({ params }: { params: Promise<Param
           "@type": "BlogPosting",
           headline: post.title,
           description: post.description,
+          mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
           image: post.image,
           author: {
             "@type": "Person",
             name: post.author
           },
-          datePublished: post.date
+          publisher: {
+            "@type": "Organization",
+            name: "AIUPSKILLED"
+          },
+          datePublished: post.date,
+          dateModified: post.date
         }}
       />
       <div className="mb-8 overflow-hidden rounded-3xl border border-black/10 bg-white p-2 shadow-soft">

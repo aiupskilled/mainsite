@@ -1,17 +1,43 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { getAllPostsMeta } from "@/lib/blog";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "AI strategy, implementation, and operating-system thinking for serious teams."
+  description: "AI strategy, implementation, and operating-system thinking for serious teams.",
+  alternates: {
+    canonical: "/blog"
+  },
+  openGraph: {
+    title: "AIUPSKILLED Blog",
+    description: "AI strategy, implementation, and operating-system thinking for serious teams.",
+    url: `${siteConfig.url}/blog`
+  },
+  twitter: {
+    title: "AIUPSKILLED Blog",
+    description: "AI strategy, implementation, and operating-system thinking for serious teams."
+  }
 };
 
 export default function BlogPage() {
   const posts = getAllPostsMeta();
+  const postsListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "AIUPSKILLED Blog Articles",
+    itemListElement: posts.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${siteConfig.url}/blog/${post.slug}`,
+      name: post.title
+    }))
+  };
 
   return (
     <div className="pb-20">
+      <JsonLd data={postsListSchema} />
       <section className="relative overflow-hidden border-b border-black/5 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.12),transparent_26%),radial-gradient(circle_at_top_right,rgba(255,107,107,0.12),transparent_26%),linear-gradient(180deg,#ffffff_0%,#faf9f6_72%)]">
         <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
           <h1 className="text-3xl font-black tracking-[-0.03em] md:text-4xl">Blog</h1>

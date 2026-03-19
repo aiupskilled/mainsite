@@ -1,9 +1,22 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Meet the founders behind AIUPSKILLED and the mission driving premium AI education."
+  description: "Meet the founders behind AIUPSKILLED and the mission driving premium AI education.",
+  alternates: {
+    canonical: "/about"
+  },
+  openGraph: {
+    title: "About AIUPSKILLED",
+    description: "Meet the founders behind AIUPSKILLED and the mission driving premium AI education.",
+    url: `${siteConfig.url}/about`
+  },
+  twitter: {
+    title: "About AIUPSKILLED",
+    description: "Meet the founders behind AIUPSKILLED and the mission driving premium AI education."
+  }
 };
 
 const founders = [

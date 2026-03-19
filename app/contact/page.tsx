@@ -1,9 +1,22 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Connect with AIUPSKILLED for enterprise or team learning inquiries."
+  description: "Connect with AIUPSKILLED for enterprise or team learning inquiries.",
+  alternates: {
+    canonical: "/contact"
+  },
+  openGraph: {
+    title: "Contact AIUPSKILLED",
+    description: "Connect with AIUPSKILLED for enterprise or team learning inquiries.",
+    url: `${siteConfig.url}/contact`
+  },
+  twitter: {
+    title: "Contact AIUPSKILLED",
+    description: "Connect with AIUPSKILLED for enterprise or team learning inquiries."
+  }
 };
 
 export default function ContactPage() {

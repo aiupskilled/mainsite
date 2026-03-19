@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { Accordion } from "@/components/ui/accordion";
 import { courses, getCourseBySlug } from "@/lib/courses";
+import { siteConfig } from "@/lib/site";
 
 type Params = { slug: string };
 
@@ -22,10 +23,19 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return {
     title: course.title,
     description: course.description,
+    alternates: {
+      canonical: `/courses/${course.slug}`
+    },
     openGraph: {
       title: course.title,
       description: course.description,
+      url: `${siteConfig.url}/courses/${course.slug}`,
       images: [{ url: course.image, width: 1200, height: 630, alt: course.title }]
+    },
+    twitter: {
+      title: course.title,
+      description: course.description,
+      images: [course.image]
     }
   };
 }
@@ -63,9 +73,16 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
           "@type": "Course",
           name: course.title,
           description: course.description,
+          url: `${siteConfig.url}/courses/${course.slug}`,
           provider: {
             "@type": "Organization",
             name: "AIUPSKILLED"
+          },
+          offers: {
+            "@type": "Offer",
+            price: course.price.replace("$", ""),
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock"
           }
         }}
       />

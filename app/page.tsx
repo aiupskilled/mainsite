@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CourseListingCard } from "@/components/courses/CourseListingCard";
@@ -6,6 +7,27 @@ import { JsonLd } from "@/components/JsonLd";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { courses } from "@/lib/courses";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "AI Courses for Executives and Tech Teams",
+  description:
+    "Master practical AI strategy, tools, and implementation with premium courses for executives and technical professionals.",
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    title: "AI Courses for Executives and Tech Teams | AIUPSKILLED",
+    description:
+      "Master practical AI strategy, tools, and implementation with premium courses for executives and technical professionals.",
+    url: siteConfig.url
+  },
+  twitter: {
+    title: "AI Courses for Executives and Tech Teams | AIUPSKILLED",
+    description:
+      "Master practical AI strategy, tools, and implementation with premium courses for executives and technical professionals."
+  }
+};
 
 const testimonials = [
   {
@@ -107,23 +129,46 @@ const trustedLogos = [
 ];
 
 export default function HomePage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer
+      }
+    }))
+  };
+
   return (
     <>
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "EducationalOrganization",
-          name: "AIUPSKILLED",
-          url: "https://aiupskilled.com",
-          description: "Executive and technical AI upskilling programs",
-          sameAs: [
-            "https://www.linkedin.com",
-            "https://www.instagram.com",
-            "https://x.com",
-            "https://www.youtube.com"
+          "@graph": [
+            {
+              "@type": "EducationalOrganization",
+              name: "AIUPSKILLED",
+              url: siteConfig.url,
+              description: "Executive and technical AI upskilling programs",
+              sameAs: [
+                "https://www.linkedin.com",
+                "https://www.instagram.com",
+                "https://x.com",
+                "https://www.youtube.com"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              name: "AIUPSKILLED",
+              url: siteConfig.url
+            }
           ]
         }}
       />
+      <JsonLd data={faqSchema} />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="ai-grid absolute inset-0 opacity-50" />
