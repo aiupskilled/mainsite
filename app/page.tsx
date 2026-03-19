@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CourseListingCard } from "@/components/courses/CourseListingCard";
 import { FAQ } from "@/components/FAQ";
@@ -97,6 +98,14 @@ const stats = [
   { label: "Avg. Course Rating", value: "4.9/5" }
 ];
 
+const trustedLogos = [
+  { name: "OpenAI", src: "/images/logos/openai.svg", href: "https://openai.com" },
+  { name: "Microsoft", src: "/images/logos/microsoft.svg", href: "https://www.microsoft.com" },
+  { name: "Meta", src: "/images/logos/meta.svg", href: "https://about.meta.com" },
+  { name: "Amazon", src: "/images/logos/amazon.svg", href: "https://www.amazon.com" },
+  { name: "NVIDIA", src: "/images/logos/nvidia.svg", href: "https://www.nvidia.com" }
+];
+
 export default function HomePage() {
   return (
     <>
@@ -128,6 +137,9 @@ export default function HomePage() {
             For Executives & Tech Professionals
           </p>
             <h1 className="text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">Master AI Skills to Transform Your Career</h1>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/55 md:text-base">
+              AI Tools + Automation - Learn Faster, Work Smarter
+            </p>
             <p className="max-w-2xl text-lg text-black/70 md:text-xl">
               Learn practical AI with real workflows, implementation frameworks, and production-ready skills designed for professionals who want measurable outcomes.
             </p>
@@ -136,7 +148,13 @@ export default function HomePage() {
                 href="/courses"
                 className="inline-flex rounded-full bg-black px-8 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-accent"
               >
-                Start Learning
+                Start Learning Free
+              </Link>
+              <Link
+                href="/courses"
+                className="inline-flex rounded-full border border-black/15 bg-white/80 px-8 py-4 text-sm font-semibold uppercase tracking-[0.12em] text-black transition hover:border-accent hover:text-accent"
+              >
+                Explore Courses
               </Link>
             </div>
           </div>
@@ -157,23 +175,6 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-5 pb-8 md:px-8">
         <NewsletterSection compact />
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 py-8 md:px-8">
-        <div className="rounded-[2rem] border border-black/8 bg-white p-6 shadow-[0_16px_50px_rgba(17,17,17,0.06)] md:p-8">
-          <div className="mb-6 max-w-2xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Social Proof</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight md:text-4xl">Trusted by professionals and teams scaling AI capability.</h2>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat) => (
-              <article key={stat.label} className="rounded-[1.25rem] border border-black/8 bg-bg px-5 py-5">
-                <p className="text-3xl font-black tracking-tight md:text-4xl">{stat.value}</p>
-                <p className="mt-2 text-sm font-medium text-black/65">{stat.label}</p>
-              </article>
-            ))}
-          </div>
-        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8" id="courses">
@@ -202,9 +203,55 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-5 py-8 md:px-8">
+        <div className="rounded-[2rem] border border-black/8 bg-white p-6 shadow-[0_16px_50px_rgba(17,17,17,0.06)] md:p-8">
+          <div className="mb-6 max-w-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Social Proof</p>
+            <h2 className="mt-2 text-3xl font-black tracking-tight md:text-4xl">Trusted by professionals and teams scaling AI capability.</h2>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat) => (
+              <article key={stat.label} className="rounded-[1.25rem] border border-black/8 bg-bg px-5 py-5">
+                <p className="text-3xl font-black tracking-tight md:text-4xl">{stat.value}</p>
+                <p className="mt-2 text-sm font-medium text-black/65">{stat.label}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-5xl px-5 py-16 md:px-8">
         <h2 className="mb-10 text-3xl font-bold md:text-5xl">FAQ</h2>
         <FAQ items={faqs} />
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-10 md:px-8">
+        <div className="rounded-[2rem] border border-black/8 bg-white p-6 shadow-[0_16px_50px_rgba(17,17,17,0.06)] md:p-8">
+          <div className="mb-6 max-w-3xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">Trusted Network</p>
+            <h2 className="mt-2 text-2xl font-black tracking-tight md:text-4xl">Employees from leading AI and tech companies trust AIUPSKILLED.</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {trustedLogos.map((logo) => (
+              <a
+                key={logo.name}
+                href={logo.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-16 items-center justify-center rounded-[1rem] border border-black/10 bg-bg px-4 transition hover:border-accent/40 hover:bg-white"
+                aria-label={`Visit ${logo.name}`}
+              >
+                <Image
+                  src={logo.src}
+                  alt={`${logo.name} logo`}
+                  width={130}
+                  height={34}
+                  className="h-7 w-auto object-contain opacity-80"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8">

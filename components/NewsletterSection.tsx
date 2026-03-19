@@ -1,8 +1,46 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+
 type NewsletterSectionProps = {
   compact?: boolean;
 };
 
 export function NewsletterSection({ compact = false }: NewsletterSectionProps) {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setLoading(true);
+    setSuccess(null);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+
+      const data = (await response.json()) as { success?: boolean; error?: string };
+
+      if (!response.ok) {
+        setError(data.error ?? "Unable to subscribe right now.");
+        return;
+      }
+
+      setSuccess("Subscribed successfully.");
+      setEmail("");
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   if (compact) {
     return (
       <section
@@ -14,17 +52,25 @@ export function NewsletterSection({ compact = false }: NewsletterSectionProps) {
         <p className="mt-3 max-w-xl text-sm leading-6 text-black/68 md:text-base">
           Practical AI strategy, technical implementation notes, and operator-level signals for teams building real advantage.
         </p>
-        <form className="mt-5 flex max-w-2xl flex-col gap-3 sm:flex-row" aria-label="Newsletter subscription form">
+        <form className="mt-5 flex max-w-2xl flex-col gap-3 sm:flex-row" aria-label="Newsletter subscription form" onSubmit={onSubmit}>
           <input
             type="email"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your business email"
             className="h-12 flex-1 rounded-full border border-black/10 bg-bg px-5 text-sm outline-none transition focus:border-accent md:text-base"
           />
-          <button className="h-12 rounded-full bg-black px-7 text-sm font-semibold text-white transition hover:bg-accent" type="submit">
-            Subscribe
+          <button
+            className="h-12 rounded-full bg-black px-7 text-sm font-semibold text-white transition hover:bg-accent disabled:cursor-not-allowed disabled:opacity-70"
+            type="submit"
+            disabled={loading}
+          >
+            {loading ? "Subscribing..." : "Subscribe"}
           </button>
         </form>
+        {success ? <p className="mt-3 text-sm text-green-700">{success}</p> : null}
+        {error ? <p className="mt-3 text-sm text-red-600">{error}</p> : null}
       </section>
     );
   }
@@ -38,17 +84,25 @@ export function NewsletterSection({ compact = false }: NewsletterSectionProps) {
       <p className="mx-auto mb-8 max-w-2xl text-black/70">
         Actionable frameworks, implementation patterns, and market signals designed for executives and technical leaders.
       </p>
-      <form className="mx-auto flex max-w-2xl flex-col gap-3 sm:flex-row" aria-label="Newsletter subscription form">
+      <form className="mx-auto flex max-w-2xl flex-col gap-3 sm:flex-row" aria-label="Newsletter subscription form" onSubmit={onSubmit}>
         <input
           type="email"
           required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your business email"
           className="h-14 flex-1 rounded-full border border-black/10 bg-bg px-6 text-base outline-none transition focus:border-accent"
         />
-        <button className="h-14 rounded-full bg-black px-8 text-sm font-semibold text-white transition hover:bg-accent" type="submit">
-          Subscribe Now
+        <button
+          className="h-14 rounded-full bg-black px-8 text-sm font-semibold text-white transition hover:bg-accent disabled:cursor-not-allowed disabled:opacity-70"
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? "Subscribing..." : "Subscribe Now"}
         </button>
       </form>
+      {success ? <p className="mt-4 text-sm text-green-700">{success}</p> : null}
+      {error ? <p className="mt-4 text-sm text-red-600">{error}</p> : null}
     </section>
   );
 }

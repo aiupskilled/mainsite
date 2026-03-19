@@ -38,6 +38,7 @@ export type Course = {
   };
   learnHighlights: CourseFeature[];
   testimonials: CourseTestimonial[];
+  tags: ("AI" | "Software Engineering" | "Full Advanced")[];
 };
 
 export const courses: Course[] = [
@@ -113,7 +114,8 @@ export const courses: Course[] = [
         name: "Daniel Hsu",
         role: "Chief Transformation Officer"
       }
-    ]
+    ],
+    tags: ["AI"]
   },
   {
     slug: "ai-for-tech-people",
@@ -187,7 +189,8 @@ export const courses: Course[] = [
         name: "Victor Chen",
         role: "AI Platform Lead"
       }
-    ]
+    ],
+    tags: ["AI", "Software Engineering", "Full Advanced"]
   }
 ];
 
