@@ -4,9 +4,9 @@ export const siteConfig = {
   description:
     "AIUPSKILLED helps executives and technical professionals master applied AI strategy, systems, and execution.",
   social: {
-    linkedin: "https://www.linkedin.com",
-    instagram: "https://www.instagram.com",
-    twitter: "https://x.com",
-    youtube: "https://www.youtube.com"
+    instagram: "https://www.instagram.com/official_aiupskilled/",
+    linkedin: "https://www.linkedin.com/company/aiupskilled/",
+    twitter: "https://x.com/aiupskilled/",
+    youtube: "https://www.youtube.com/@aiupskilled"
   }
 };

@@ -154,10 +154,10 @@ export default function HomePage() {
               url: siteConfig.url,
               description: "Executive and technical AI upskilling programs",
               sameAs: [
-                "https://www.linkedin.com",
-                "https://www.instagram.com",
-                "https://x.com",
-                "https://www.youtube.com"
+                siteConfig.social.linkedin,
+                siteConfig.social.instagram,
+                siteConfig.social.twitter,
+                siteConfig.social.youtube
               ]
             },
             {
