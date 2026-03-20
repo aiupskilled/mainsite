@@ -203,16 +203,20 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="fade-in-up relative overflow-hidden rounded-3xl border border-black/5 bg-white p-2 shadow-card">
-            <div className="aspect-video overflow-hidden rounded-2xl">
-              <iframe
-                src="https://player.vimeo.com/video/1172099904?fl=ip&fe=ec"
-                title="AI Up Skilled intro"
-                className="h-full w-full"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
+          <div className="fade-in-up mx-auto w-full max-w-[360px] overflow-hidden rounded-3xl border border-black/5 bg-white p-2 shadow-card">
+            <div className="aspect-[9/16] overflow-hidden rounded-2xl bg-black">
+              <video
+                className="h-full w-full object-cover"
+                src="/videos/hero-reel.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
