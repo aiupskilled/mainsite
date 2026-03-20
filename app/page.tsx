@@ -176,7 +176,7 @@ export default function HomePage() {
           <div className="ai-orb ai-orb-2" />
           <div className="ai-orb ai-orb-3" />
         </div>
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-14 md:grid-cols-2 md:items-center md:px-8 md:pt-20">
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-4 md:grid-cols-2 md:items-center md:px-8 md:pt-4">
           <div className="fade-in-up space-y-6">
           <p className="inline-flex rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             For Executives & Tech Professionals
