@@ -129,6 +129,12 @@ const trustedLogos = [
 ];
 
 export default function HomePage() {
+  const homepageCourses = [...courses].sort((a, b) => {
+    if (a.slug === "ai-foundation-course") return -1;
+    if (b.slug === "ai-foundation-course") return 1;
+    return 0;
+  });
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -234,7 +240,7 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="grid gap-10 md:grid-cols-2">
-          {courses.map((course) => (
+          {homepageCourses.map((course) => (
             <CourseListingCard key={course.slug} course={course} />
           ))}
         </div>

@@ -10,7 +10,7 @@ export type CourseTestimonial = {
 };
 
 export type Course = {
-  slug: "ai-for-executives" | "ai-for-tech-people";
+  slug: "ai-for-executives" | "ai-for-tech-people" | "ai-foundation-course";
   title: string;
   subtitle: string;
   description: string;
@@ -29,7 +29,7 @@ export type Course = {
   accentTo: string;
   accentSoft: string;
   accentBorder: string;
-  icon: "executive" | "technical";
+  icon: "executive" | "technical" | "foundation";
   alignment: "left" | "right";
   instructor: {
     name: string;
@@ -191,6 +191,68 @@ export const courses: Course[] = [
       }
     ],
     tags: ["AI", "Software Engineering", "Full Advanced"]
+  },
+  {
+    slug: "ai-foundation-course",
+    title: "AI FOUNDATION COURSE",
+    subtitle: "A practical beginner foundation to start AI with clarity, structure, and real tool usage.",
+    description:
+      "Start from zero and build confidence in AI, ML basics, LLMs, and essential tools with a simple implementation roadmap.",
+    image: "/images/course-tech.svg",
+    overview:
+      "This course is designed for beginners who want a practical entry into AI. You will understand the core concepts, learn where ML fits, build a clear roadmap, and start using modern AI tools in everyday workflows.",
+    curriculum: [
+      "Module 1: Foundations - Video 0: Introduction, Video 1: What is AI, Generative AI, LLMs, and how they differ, Video 2: What AI can and cannot do, Video 3: Common myths about AI",
+      "Module 2: Practical Usage - Video 4: How to write better prompts, Video 5: Top 5 AI tools",
+      "Module 3: Applied Learning - Video 6 & 7: Notebook LM"
+    ],
+    outcomes: [
+      "Clear understanding of AI vs ML vs LLMs",
+      "Actionable AI learning roadmap for next 90 days",
+      "Hands-on confidence with practical AI tools"
+    ],
+    audience: [
+      "Beginners starting AI",
+      "Students and early professionals",
+      "Working professionals looking to upskill quickly"
+    ],
+    price: "Rs 159",
+    videoUrl: "https://player.vimeo.com/video/1172099904?fl=ip&fe=ec",
+    duration: "1 week",
+    modulesCount: 3,
+    badge: "Foundation Track",
+    level: "Beginner",
+    accentFrom: "from-indigo-500",
+    accentTo: "to-fuchsia-500",
+    accentSoft: "bg-indigo-50",
+    accentBorder: "border-indigo-200",
+    icon: "foundation",
+    alignment: "left",
+    instructor: {
+      name: "AIUPSKILLED Team",
+      role: "Foundation Instructors",
+      initials: "AF"
+    },
+    learnHighlights: [
+      {
+        title: "AI Basics Simplified",
+        description: "Understand the core building blocks without jargon."
+      },
+      {
+        title: "ML Context",
+        description: "Learn where machine learning fits into the AI landscape."
+      },
+      {
+        title: "LLM Essentials",
+        description: "Use modern LLMs effectively for real tasks."
+      },
+      {
+        title: "Tool Workflow",
+        description: "Apply AI tools to improve day-to-day productivity."
+      }
+    ],
+    testimonials: [],
+    tags: ["AI"]
   }
 ];
 

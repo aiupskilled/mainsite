@@ -109,6 +109,31 @@ a {
   animation-delay: 1.3s;
 }
 
+.new-offer-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff4f81 100%);
+  box-shadow: 0 10px 24px rgba(255, 107, 107, 0.32);
+  animation: badgeFloatGlow 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.new-offer-badge::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -40%;
+  width: 36%;
+  height: 320%;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  transform: rotate(18deg);
+  animation: badgeSheen 2.8s ease-in-out infinite;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -138,5 +163,43 @@ a {
 
   to {
     transform: translate3d(0, -14px, 0) scale(1.05);
+  }
+}
+
+@keyframes badgeFloatGlow {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 10px 24px rgba(255, 107, 107, 0.28);
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 14px 30px rgba(255, 107, 107, 0.4);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 10px 24px rgba(255, 107, 107, 0.28);
+  }
+}
+
+@keyframes badgeSheen {
+  0% {
+    left: -45%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.9;
+  }
+
+  55% {
+    left: 120%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 120%;
+    opacity: 0;
   }
 }

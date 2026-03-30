@@ -22,11 +22,17 @@ export const metadata: Metadata = {
 };
 
 export default function CoursesPage() {
+  const coursesForPage = [...courses].sort((a, b) => {
+    if (a.slug === "ai-foundation-course") return -1;
+    if (b.slug === "ai-foundation-course") return 1;
+    return 0;
+  });
+
   const coursesListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "AIUPSKILLED Courses",
-    itemListElement: courses.map((course, index) => ({
+    itemListElement: coursesForPage.map((course, index) => ({
       "@type": "ListItem",
       position: index + 1,
       url: `${siteConfig.url}/courses/${course.slug}`,
@@ -38,7 +44,7 @@ export default function CoursesPage() {
     <div className="pb-24">
       <JsonLd data={coursesListSchema} />
       <section className="mx-auto max-w-7xl px-5 pt-4 md:px-8 md:pt-6">
-        <CoursesFilterLayout courses={courses} />
+        <CoursesFilterLayout courses={coursesForPage} />
       </section>
     </div>
   );

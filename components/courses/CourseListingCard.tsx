@@ -15,6 +15,15 @@ function CourseIcon({ type }: { type: Course["icon"] }) {
     );
   }
 
+  if (type === "foundation") {
+    return (
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
+        <path d="M4 12L12 4L20 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M7 12V19H17V12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden>
       <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" strokeWidth="1.8" />
@@ -25,19 +34,20 @@ function CourseIcon({ type }: { type: Course["icon"] }) {
 
 export function CourseListingCard({ course }: Props) {
   const isExecutive = course.slug === "ai-for-executives";
+  const isFoundation = course.slug === "ai-foundation-course";
   const ctaGradient = `bg-gradient-to-r ${course.accentFrom} ${course.accentTo}`;
-  const tintedPanel = isExecutive ? "from-sky-50 via-white to-white" : "from-rose-50 via-white to-white";
-  const accentBorder = isExecutive ? "border-sky-200/70" : "border-rose-200/70";
-  const accentText = isExecutive ? "text-sky-700" : "text-rose-600";
-  const softBorder = isExecutive ? "border-sky-100" : "border-rose-100";
-  const chipBorder = isExecutive ? "border-sky-200" : "border-rose-200";
-  const chipBg = isExecutive ? "bg-sky-50" : "bg-rose-50";
-  const rail = isExecutive ? `bg-gradient-to-b ${course.accentFrom} ${course.accentTo}` : `bg-gradient-to-b ${course.accentFrom} ${course.accentTo}`;
-  const builtFor = isExecutive ? "Leaders" : "Engineers";
-  const ctaLabel = isExecutive ? "View Executive Track" : "View Builder Track";
+  const tintedPanel = isExecutive ? "from-sky-50 via-white to-white" : isFoundation ? "from-indigo-50 via-white to-white" : "from-rose-50 via-white to-white";
+  const accentBorder = isExecutive ? "border-sky-200/70" : isFoundation ? "border-indigo-200/70" : "border-rose-200/70";
+  const accentText = isExecutive ? "text-sky-700" : isFoundation ? "text-indigo-700" : "text-rose-600";
+  const softBorder = isExecutive ? "border-sky-100" : isFoundation ? "border-indigo-100" : "border-rose-100";
+  const chipBorder = isExecutive ? "border-sky-200" : isFoundation ? "border-indigo-200" : "border-rose-200";
+  const chipBg = isExecutive ? "bg-sky-50" : isFoundation ? "bg-indigo-50" : "bg-rose-50";
+  const rail = `bg-gradient-to-b ${course.accentFrom} ${course.accentTo}`;
+  const builtFor = isExecutive ? "Leaders" : isFoundation ? "Beginners" : "Engineers";
+  const ctaLabel = isExecutive ? "View Executive Track" : isFoundation ? "View Foundation Course" : "View Builder Track";
 
   return (
-    <article className={`group relative overflow-hidden rounded-xl border border-black/8 p-2 shadow-[0_18px_50px_rgba(17,17,17,0.06)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(17,17,17,0.08)] ${isExecutive ? "bg-white" : "bg-[#fffaf9]"}`}>
+    <article className={`group relative overflow-hidden rounded-xl border border-black/8 p-2 shadow-[0_18px_50px_rgba(17,17,17,0.06)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(17,17,17,0.08)] ${isExecutive ? "bg-white" : isFoundation ? "bg-[#f9f9ff]" : "bg-[#fffaf9]"}`}>
       <div className={`absolute left-0 top-10 h-[calc(100%-5rem)] w-1 rounded-r-full ${rail}`} />
       <div className={`grid gap-4 rounded-lg border ${accentBorder} bg-gradient-to-br ${tintedPanel} p-5 md:p-5`}>
         <div className="flex flex-col gap-4">

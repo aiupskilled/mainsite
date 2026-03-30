@@ -46,6 +46,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
 
   if (!course) notFound();
 
+  const isComingSoonCourse = course.slug === "ai-for-executives" || course.slug === "ai-for-tech-people";
+  const isFoundationCourse = course.slug === "ai-foundation-course";
   const schemaPrice = course.price.replace(/[^0-9.]/g, "");
   const gradient = `bg-gradient-to-r ${course.accentFrom} ${course.accentTo}`;
   const gradientText = `bg-gradient-to-r ${course.accentFrom} ${course.accentTo} bg-clip-text text-transparent`;
@@ -75,7 +77,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
       <section className="relative overflow-hidden border-b border-black/5 bg-[linear-gradient(180deg,#ffffff_0%,#faf9f6_70%)]">
         <div className={`absolute -left-24 top-12 h-72 w-72 rounded-full blur-3xl opacity-25 ${course.accentSoft}`} />
         <div className={`absolute -right-20 top-28 h-80 w-80 rounded-full blur-3xl opacity-25 ${course.accentSoft}`} />
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-16 md:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20">
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-16 md:px-8 lg:grid-cols-1 lg:items-center lg:py-20">
           <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full border border-black/10 bg-white/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-black/60 backdrop-blur">
@@ -99,25 +101,28 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
               </div>
             </div>
             <div className="flex flex-wrap gap-4">
-              <Link href="#enroll" className={`inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-white shadow-lg ${gradient}`}>
-                Enroll Now
-              </Link>
+              {isComingSoonCourse ? (
+                <span className="inline-flex h-12 cursor-not-allowed items-center justify-center rounded-full border border-black/10 bg-white/75 px-7 text-sm font-semibold text-black/55">
+                  Coming Soon
+                </span>
+              ) : (
+                <>
+                  <Link href={isFoundationCourse ? "/contact" : "#enroll"} className={`inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-white shadow-lg ${gradient}`}>
+                    Buy Now
+                  </Link>
+                  {isFoundationCourse ? (
+                    <span className="inline-flex h-12 items-center rounded-full bg-accent px-6 text-base font-black text-white shadow-lg">
+                      Rs 159
+                    </span>
+                  ) : (
+                    <span className={`inline-flex h-12 items-center rounded-full border px-5 text-sm font-semibold ${course.accentSoft} ${course.accentBorder}`}>
+                      {course.price}
+                    </span>
+                  )}
+                </>
+              )}
               <div className="inline-flex items-center rounded-full border border-black/10 bg-white/75 px-5 text-sm text-black/60">
                 {course.duration} · {course.modulesCount} modules
-              </div>
-            </div>
-          </div>
-
-          <div className="overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 p-3 shadow-[0_24px_80px_rgba(17,17,17,0.08)] backdrop-blur-xl">
-            <div className="overflow-hidden rounded-[1.5rem] border border-black/5 bg-black p-1.5">
-              <div className="aspect-video overflow-hidden rounded-[1.25rem] bg-black">
-                <iframe
-                  src={course.videoUrl}
-                  title={course.title}
-                  className="h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
               </div>
             </div>
           </div>
@@ -145,10 +150,16 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
                 <p className="mt-4 text-white/70">Join {course.title} to get the frameworks, systems, and execution clarity required to lead or ship AI with confidence.</p>
               </div>
               <div className="shrink-0">
-                <p className={`text-5xl font-black ${gradientText}`}>{course.price}</p>
-                <Link href="#" className={`mt-4 inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-white ${gradient}`}>
-                  Secure Your Seat
-                </Link>
+                <p className={isFoundationCourse ? "text-5xl font-black text-accent" : `text-5xl font-black ${gradientText}`}>{course.price}</p>
+                {isComingSoonCourse ? (
+                  <span className="mt-4 inline-flex h-12 cursor-not-allowed items-center justify-center rounded-full border border-white/25 bg-white/10 px-7 text-sm font-semibold text-white/80">
+                    Coming Soon
+                  </span>
+                ) : (
+                  <Link href="/contact" className={`mt-4 inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-white ${gradient}`}>
+                    Buy Now
+                  </Link>
+                )}
               </div>
             </div>
           </div>

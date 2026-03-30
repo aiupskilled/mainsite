@@ -173,17 +173,18 @@ export function SiteEnhancements() {
         Contact Us
       </Link>
 
-      <div className="fixed inset-x-0 bottom-0 z-[58] border-t border-black/10 bg-white/95 backdrop-blur">
+      <div className="fixed inset-x-0 bottom-0 z-[58] border-t border-black/10 bg-[linear-gradient(90deg,#ffffff_0%,#fff5f5_40%,#ffffff_100%)] shadow-[0_-12px_35px_rgba(255,107,107,0.18)] backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 md:h-[68px] md:px-8">
-          <p className="line-clamp-1 text-xs font-semibold uppercase tracking-[0.14em] text-black/75 md:text-sm">
-            <span className="rounded-full bg-accent px-2.5 py-1 text-white">New</span>{" "}
-            <span className="font-black text-black">AI Foundations Course at ₹99</span>
+          <p className="line-clamp-1 text-xs font-semibold uppercase tracking-[0.14em] text-black/80 md:text-sm">
+            <span className="new-offer-badge rounded-full px-2.5 py-1 text-white">NEW</span>{" "}
+            <span className="font-black text-black">AI FOUNDATION COURSE</span>{" "}
+            <span className="rounded-md bg-black px-2 py-0.5 font-black text-white">Rs 159</span>
           </p>
           <Link
-            href="/ai-course-99"
-            className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-black px-5 text-sm font-semibold text-white transition hover:bg-accent md:h-11 md:px-6"
+            href="/courses/ai-foundation-course"
+            className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-accent px-5 text-sm font-extrabold text-white shadow-[0_10px_30px_rgba(255,107,107,0.35)] transition hover:scale-[1.03] hover:brightness-105 md:h-11 md:px-6"
           >
-            Buy at Rs 99
+            Buy at Rs 159
           </Link>
         </div>
       </div>
