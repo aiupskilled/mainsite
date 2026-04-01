@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SiteEnhancements } from "@/components/SiteEnhancements";
 import { siteConfig } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main className="pb-20 md:pb-24">{children}</main>
         <SiteEnhancements />
         <Footer />
+        <Analytics/>
       </body>
     </html>
   );
