@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { SiteEnhancements } from "@/components/SiteEnhancements";
 import { siteConfig } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: "AIUPSKILLED",
@@ -76,6 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteEnhancements />
         <Footer />
         <Analytics/>
+        <SpeedInsights />
       </body>
     </html>
   );
