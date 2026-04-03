@@ -184,10 +184,15 @@ export default function HomePage() {
         </div>
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-4 md:grid-cols-2 md:items-center md:px-8 md:pt-4">
           <div className="fade-in-up space-y-6">
-          <p className="inline-flex rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-            For Executives & Tech Professionals
-          </p>
-            <h1 className="text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">Master AI Skills to Transform Your Career</h1>
+            <Link
+              href="/courses/ai-foundation-course"
+              className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-[linear-gradient(90deg,#ffe8e8_0%,#ffffff_100%)] px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-accent shadow-[0_10px_28px_rgba(255,107,107,0.28)] transition hover:brightness-105"
+            >
+              <span className="new-offer-badge rounded-full px-2 py-0.5 text-[10px] text-white">Launch</span>
+              <span className="font-black text-black">AI FOUNDATION COURSE</span>
+              <span className="rounded-md bg-accent px-2 py-0.5 text-white">95% OFF</span>
+            </Link>
+            <h1 className="text-5xl font-black leading-[1.03] tracking-tight md:text-7xl">Learn AI from Top OpenAI and Anthropic Engineers</h1>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-black/55 md:text-base">
               AI Tools + Automation - Learn Faster, Work Smarter
             </p>

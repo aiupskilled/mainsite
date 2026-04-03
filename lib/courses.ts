@@ -204,7 +204,8 @@ export const courses: Course[] = [
     curriculum: [
       "Module 1: Foundations - Video 0: Introduction, Video 1: What is AI, Generative AI, LLMs, and how they differ, Video 2: What AI can and cannot do, Video 3: Common myths about AI",
       "Module 2: Practical Usage - Video 4: How to write better prompts, Video 5: Top 5 AI tools",
-      "Module 3: Applied Learning - Video 6 & 7: Notebook LM"
+      "Module 3: Applied Learning - Video 6 & 7: Notebook LM",
+      "Module 4: Build an app with AI - Video: Build an app with AI"
     ],
     outcomes: [
       "Clear understanding of AI vs ML vs LLMs",
@@ -219,7 +220,7 @@ export const courses: Course[] = [
     price: "Rs 159",
     videoUrl: "https://player.vimeo.com/video/1172099904?fl=ip&fe=ec",
     duration: "1 week",
-    modulesCount: 3,
+    modulesCount: 4,
     badge: "Foundation Track",
     level: "Beginner",
     accentFrom: "from-indigo-500",

@@ -48,6 +48,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
 
   const isComingSoonCourse = course.slug === "ai-for-executives" || course.slug === "ai-for-tech-people";
   const isFoundationCourse = course.slug === "ai-foundation-course";
+  const foundationCheckoutUrl = "https://courses.aiupskilled.com/learn/ai-foundation-course-for-beginners";
+  const buyNowHref = isFoundationCourse ? foundationCheckoutUrl : "/contact";
   const schemaPrice = course.price.replace(/[^0-9.]/g, "");
   const gradient = `bg-gradient-to-r ${course.accentFrom} ${course.accentTo}`;
   const gradientText = `bg-gradient-to-r ${course.accentFrom} ${course.accentTo} bg-clip-text text-transparent`;
@@ -107,7 +109,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
                 </span>
               ) : (
                 <>
-                  <Link href={isFoundationCourse ? "/contact" : "#enroll"} className={`inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-white shadow-lg ${gradient}`}>
+                  <Link href={isFoundationCourse ? foundationCheckoutUrl : "#enroll"} className={`inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-white shadow-lg ${gradient}`}>
                     Buy Now
                   </Link>
                   {isFoundationCourse ? (
@@ -156,7 +158,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
                     Coming Soon
                   </span>
                 ) : (
-                  <Link href="/contact" className={`mt-4 inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-white ${gradient}`}>
+                  <Link href={buyNowHref} className={`mt-4 inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold text-white ${gradient}`}>
                     Buy Now
                   </Link>
                 )}

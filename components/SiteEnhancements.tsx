@@ -178,13 +178,14 @@ export function SiteEnhancements() {
           <p className="line-clamp-1 text-xs font-semibold uppercase tracking-[0.14em] text-black/80 md:text-sm">
             <span className="new-offer-badge rounded-full px-2.5 py-1 text-white">NEW</span>{" "}
             <span className="font-black text-black">AI FOUNDATION COURSE</span>{" "}
-            <span className="rounded-md bg-black px-2 py-0.5 font-black text-white">Rs 159</span>
+            <span className="rounded-md bg-black px-2 py-0.5 font-black text-white">Rs 159</span>{" "}
+            <span className="rounded-md bg-accent px-2 py-0.5 font-black text-white">95% OFF</span>
           </p>
           <Link
-            href="/courses/ai-foundation-course"
+            href="https://courses.aiupskilled.com/learn/ai-foundation-course-for-beginners"
             className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-accent px-5 text-sm font-extrabold text-white shadow-[0_10px_30px_rgba(255,107,107,0.35)] transition hover:scale-[1.03] hover:brightness-105 md:h-11 md:px-6"
           >
-            Buy at Rs 159
+            Buy Now
           </Link>
         </div>
       </div>
