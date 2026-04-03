@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/site";
 export function Footer() {
   return (
     <footer className="mt-20 border-t border-black/10 bg-white/70">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-10 md:flex-row md:items-center md:justify-between md:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 pb-24 pt-10 md:flex-row md:items-center md:justify-between md:px-8 md:pb-28">
         <div className="flex gap-6 text-sm text-black/70">
           <Link href="/terms">Terms</Link>
           <Link href="/privacy-policy">Privacy Policy</Link>
