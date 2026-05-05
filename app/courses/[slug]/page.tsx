@@ -48,7 +48,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<Par
 
   const isComingSoonCourse = course.slug === "ai-for-executives" || course.slug === "ai-for-tech-people";
   const isFoundationCourse = course.slug === "ai-foundation-course";
-  const foundationCheckoutUrl = "https://courses.aiupskilled.com/learn/ai-foundation-course-for-beginners";
+  const foundationCheckoutUrl = "https://www.udemy.com/course/ai-foundation-course";
   const buyNowHref = isFoundationCourse ? foundationCheckoutUrl : "/contact";
   const schemaPrice = course.price.replace(/[^0-9.]/g, "");
   const gradient = `bg-gradient-to-r ${course.accentFrom} ${course.accentTo}`;

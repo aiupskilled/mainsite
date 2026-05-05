@@ -182,7 +182,7 @@ export function SiteEnhancements() {
             <span className="rounded-md bg-accent px-2 py-0.5 font-black text-white">95% OFF</span>
           </p>
           <Link
-            href="https://courses.aiupskilled.com/learn/ai-foundation-course-for-beginners"
+            href="https://www.udemy.com/course/ai-foundation-course"
             className="inline-flex h-10 shrink-0 items-center justify-center rounded-full bg-accent px-5 text-sm font-extrabold text-white shadow-[0_10px_30px_rgba(255,107,107,0.35)] transition hover:scale-[1.03] hover:brightness-105 md:h-11 md:px-6"
           >
             Buy Now
